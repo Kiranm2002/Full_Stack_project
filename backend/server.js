@@ -1,27 +1,19 @@
-const express = require('express');
-const mongosse = require('mongoose');
-const cors = require('cors');
-const path = require('path')
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+
+dotenv.config();
+connectDB();
+
 const app = express();
 
-app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname,"frontend")))
-mongosse.connect('mongodb://localhost:27017/practiceDB').then(()=>{
-    console.log('connected to db')}).catch((err)=>{console.log(err)})
+app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
-const userRoutes = require('./routes/user_routes');
+app.use("/api/users", require("./routes/userRoutes"));
 
-// app.get("/ping", (req, res) => {
-//   console.log("PING HIT");
-//   res.send("pong");
-// });
+const PORT = process.env.PORT || 3000;
 
-app.use('/api/users',userRoutes)
-
-
-
-app.listen(3000,()=>{
-    console.log('server started');
-    
-})
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

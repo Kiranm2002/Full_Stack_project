@@ -1,1 +1,24 @@
-node_modules/
+# Node modules for backend and frontend
+**/node_modules/
+
+# Logs
+**/npm-debug.log
+**/yarn-debug.log
+**/yarn-error.log
+
+# Build output
+**/dist/
+**/build/
+
+# Environment files (contain secrets)
+**/.env
+
+# VSCode files
+.vscode/
+
+# macOS files
+.DS_Store
+
+# Docker files (optional)
+**/Dockerfile.*
+**/docker-compose.override.yml
