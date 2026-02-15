@@ -109,7 +109,7 @@ function App() {
         <input type="password" name="password" required onChange={handleChange} />
 
         <label>Profile Photo</label>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
+        <input type="file" accept="image/*" name="profilePhoto" onChange={handleFileChange} />
 
         <button type="submit">Register</button>
       </form>

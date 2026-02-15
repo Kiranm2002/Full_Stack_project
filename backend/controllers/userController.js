@@ -33,7 +33,7 @@ exports.registerUser = async (req, res) => {
       address,
       country,
       password: hashedPassword, // store hashed password
-      profilePhoto: req.file ? req.file.filename : null,
+      profilePhoto: req.file ? req.file.location : null,
     });
 
     await newUser.save();
