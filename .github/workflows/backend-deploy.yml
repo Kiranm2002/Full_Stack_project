@@ -27,5 +27,5 @@ jobs:
             docker stop backend || true
             docker rm backend || true
             docker rmi backend || true
-            docker build -t backend -f backend/dockerfile .
+            docker build -t backend -f backend/dockerfile backend/
             docker run -d -p 3000:3000 --name backend backend
