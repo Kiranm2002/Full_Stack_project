@@ -1,0 +1,30 @@
+name: Frontend Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/react-app/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Frontend EC2
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.EC2_FRONTEND_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/Full_Stack_project
+            git pull origin main
+            docker stop frontend || true
+            docker rm frontend || true
+            docker rmi frontend || true
+            docker build -t frontend -f frontend/react-app/dockerfile .
+            docker run -d -p 80:80 --name frontend frontend
