@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <h2>User Registration</h2>
+        <h2>User Registration Form</h2>
 
         <label>Full Name</label>
         <input type="text" name="fullname" required onChange={handleChange} />
