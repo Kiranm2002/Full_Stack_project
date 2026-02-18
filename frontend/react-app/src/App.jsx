@@ -91,7 +91,7 @@ function App() {
           </label>
         </div>
 
-        <label>Date of Birth</label>
+        <label>DOB</label>
         <input type="date" name="dob" required onChange={handleChange} />
 
         <label>Address</label>
