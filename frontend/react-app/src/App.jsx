@@ -40,7 +40,7 @@ function App() {
     }
 
     try {
-      const res = await fetch("http://65.0.94.115:3000/api/users", {
+      const res = await fetch("http://3.110.81.164:3000/api/users", {
         method: "POST",
         body: data, // ⚠️ NO Content-Type header when using FormData
       });
